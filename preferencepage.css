@@ -12,12 +12,24 @@
     height: 100px;
   }
 
+#link{
+  color: white;
+  text-decoration: none;
+  background-color: red;
+}
+a:link, a:visited{
+  text-decoration: none;
+}
 
+#findflights{
+  float:right;
+}
 
   .display{
     background-color: white;
      flex: 1 1 auto;
     width: 50%;
+    border: 1.5px solid gray;
     text-align: center;
     margin: 0 auto;
     padding: 100px;

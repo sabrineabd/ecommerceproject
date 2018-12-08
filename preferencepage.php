@@ -1,6 +1,7 @@
 <?php
-  include_once 'connect.php'; //to include the file to connect to the database
   session_start();
+  include_once 'connect.php'; //to include the file to connect to the database
+
 ?>
 
 <!DOCTYPE html>
@@ -10,22 +11,15 @@
   <link rel = "stylesheet" type="text/css" href = "preferencepage.css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
 
-
-  <style>
-
-
-  </style>
-
 </head>
 
 <body>
   <?php
-
       if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $_SESSION["origin"] = $_POST["origin"];
+        $_SESSION['origin'] = $_POST["origin"];
         $_SESSION["destination"] = $_POST["destination"];
-        // $_SESSION["departdate"] = $_POST["departdate"];
-        // $_SESSION["return_date"] = $_POST["return_date"];
+        $_SESSION["depart_date"] = $_POST["depart_date"];
+        $_SESSION["return_date"] = $_POST["return_date"];
       }
   ?>
 
@@ -60,13 +54,18 @@
       Returning <input name= "return_date" type="textfield" value="MM/DD">
       <br/><br/>
       <button type="submit" class="submitbutton" id="button" >
-          <a href="bookingpage.php">Search</a>
+          Save input
       </button>
     </form>
+    <br/> <br/>
+    <a href="bookingpage.php" id="link">
+    <button type="submit" class="submitbutton" id="findflights" >
+        Find flights
+    </button>
+    </a>
 
   </div>
 
 
 </body>
 </html>
-

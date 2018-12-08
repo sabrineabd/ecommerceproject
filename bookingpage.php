@@ -18,13 +18,7 @@
                   AND flight_destination = '".$origin."'";
     $secondresults = $conn->query($secondquery);
 
-    while($row = $results->fetch()){
-      echo $row['flight_times'];
-    }
 
-    while($row2 = $secondresults->fetch()){
-      echo $row2['flight_times'];
-    }
 
 
 ?>
@@ -53,33 +47,37 @@
   <div class ="display">
     <div id = "allflights">
     <form>
-      <div class = "flightdisplay">
-          <table>
-      
-            <tr>
-              <td> <img src="delta.png" width="40px" height="40px"> </td>
-              <th> date </th>
-              <th> <?php echo strtoupper($origin); ?> </th>
-              <th>  <?php echo $row['flight_times']; ?> </th>
-              <th>  4h  </th>
-              <th class="price"> $455 </th>
+      <?php while(($row = $results->fetch()) && ($row2 = $secondresults->fetch())){
+          echo "<div class = 'flightdisplay'>";
+              echo "<table>";
+                echo "<tr>";
+                  echo "<td> <img src='".$row['airline'].".png' width='40px' height='40px'> </td>";
+                  echo "<th> date </th>";
+                  echo "<th>".strtoupper($origin)."</th>";
+                  echo "<th>".$row['flight_times']."</th>";
+                  echo "<th>".$row['flight_duration']."</th>";
+                  echo "<th class='price'>$".rand(300,700)."</th>";
+                echo "</tr>";
+                echo "<tr>";
+                  echo "<td> <img src='".$row2['airline'].".png' width='40px' height='40px'> </td>";
+                  echo "<th> date </th>";
+                  echo "<th>".strtoupper($destination)."</th>";
+                  echo "<th>".$row2['flight_times']."</th>";
+                  echo "<th>".$row2['flight_duration']."</th>";
+                  echo "<td colspan=> <button type='submit' class='submitbutton'>Select</button> </td>";
+                echo "</tr>";
+              echo "</table>";
+          echo "</div>";
 
-            </tr>
-            <tr>
-              <td> <img src="delta.png" width="40px" height="40px"> </td>
-              <th> arrival date </th>
-              <th> <?php echo strtoupper($destination); ?> </th>
-              <th>  12:00p.m. - 4:00 p.m. </th>
-              <th> 4h </th>
-              <td colspan=> <button type="submit" class="submitbutton">Select</button> </td>
-            </tr>
-          </table>
-      </div>
+      }
+      ?>
 
+</form>
     </div>
 
-  </form>
+
   </div>
 
 </body>
 <html>
+
